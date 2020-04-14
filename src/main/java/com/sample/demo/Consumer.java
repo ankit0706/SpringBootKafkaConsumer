@@ -12,8 +12,10 @@ public class Consumer {
 
     private final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
-    @KafkaListener(topics = "users", groupId = "group_id")
-    public void consume(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed message -> %s", message));
+    @KafkaListener(topics = "jsonTopic", groupId = "group_id")
+    public void consume(User user) throws IOException {
+        logger.info("user name = " + user.getName());
+        logger.info("user age = " + user.getAge());
+        System.out.println("Received response = " + user);
     }
 }

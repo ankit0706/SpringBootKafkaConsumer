@@ -18,4 +18,11 @@ public class Consumer {
         logger.info("user age = " + user.getAge());
         System.out.println("Received response = " + user);
     }
+    
+    @KafkaListener(topics = "movies", groupId = "g_id")
+    public void consumeMovie(Movies movie) throws IOException{
+    	System.out.println(movie.getName() + ", " + movie.getRelease_year()
+    						+ ", " + movie.getDirector() + ", " + movie.getImdb()
+    						+ ", " + movie.getRottent_tomatoes());
+    }
 }
